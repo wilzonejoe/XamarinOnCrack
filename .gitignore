@@ -1,0 +1,8 @@
+.idea/
+.vs/
+
+flutter_build/
+flutter_module/build
+
+bin/
+obj/
