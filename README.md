@@ -2,7 +2,7 @@
 
 Flutter Integrated Xamarin Project Proof of Concept
 
-##Project Structure
+## Project Structure
 
 ```
     . XamarinOnCrack(Root Folder)
@@ -24,7 +24,7 @@ Flutter Integrated Xamarin Project Proof of Concept
 
 ```
 
-##Setup
+## Setup
 
 Run on **XamarinOnCrack(root folder)** before build or after flutter_module file(s) modified.
 
