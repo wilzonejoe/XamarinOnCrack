@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlutterBindings.iOS", "Flut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinonCrack.iOS", "XamarinonCrack.iOS\XamarinonCrack.iOS.csproj", "{592643E4-2B46-4222-BFE3-8D4862607334}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlutterBindings.Plugin.Android", "FlutterBindings.Plugin.Android\FlutterBindings.Plugin.Android.csproj", "{5A195BBD-0734-4595-B445-BC4FEC3566EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{592643E4-2B46-4222-BFE3-8D4862607334}.Debug|iPhone.Build.0 = Debug|iPhone
 		{592643E4-2B46-4222-BFE3-8D4862607334}.Release|iPhone.ActiveCfg = Release|iPhone
 		{592643E4-2B46-4222-BFE3-8D4862607334}.Release|iPhone.Build.0 = Release|iPhone
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{5A195BBD-0734-4595-B445-BC4FEC3566EE}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -66,13 +66,5 @@
       <SmartLink>False</SmartLink>
     </NativeReference>
   </ItemGroup>
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Condition=" '$(Configuration)' == 'Debug'" Command="sh build_flutter.sh debug simulator" WorkingDirectory="$(ProjectDir)" ContinueOnError="true">
-      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
-    </Exec>
-    <Exec Condition=" '$(Configuration)' == 'Release'" Command="sh build_flutter.sh release simulator" WorkingDirectory="$(ProjectDir)" ContinueOnError="true">
-      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
-    </Exec>
-  </Target>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

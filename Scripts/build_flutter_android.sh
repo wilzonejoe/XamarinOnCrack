@@ -7,7 +7,7 @@
 # - sh build_flutter.sh release
 
 # Define paths
-FlutterModule_DIR=../flutter_module
+FlutterModule_DIR=flutter_module
 BUILD_PROFILE=$1
 
 # Build Flutter module
@@ -27,18 +27,36 @@ case $BUILD_PROFILE in
     ;;
 esac
 
-BUILD_PATH_FLUTTER=../flutter_module/build/host/outputs/repo/com/*/flutter_module/flutter_$BUILD_PROFILE/1.0/
-
+# Copy build 
+FLUTTER_ARR_PATH=../flutter_module/build/host/outputs/repo/com/*/flutter_module/flutter_$BUILD_PROFILE/1.0/
 DESTINATION_BUILD_PATH=../flutter_build/android/$BUILD_PROFILE/build
-DESTINATION_DEPENDENCIES_PATH=../flutter_build/android/$BUILD_PROFILE/depedencies
 
 if [ ! -d $DESTINATION_BUILD_PATH ]; then
     mkdir -p $DESTINATION_BUILD_PATH
 fi
 
-echo "Copy $BUILD_PATH_FLUTTER To $DESTINATION_BUILD_PATH"
-cp -r $BUILD_PATH_FLUTTER $DESTINATION_BUILD_PATH
+echo "Copy $FLUTTER_ARR_PATH To $DESTINATION_BUILD_PATH"
+cp -r $FLUTTER_ARR_PATH $DESTINATION_BUILD_PATH
 
+# Copy plugin 
+PERMISSION_LIBRARY_ARR_PATH=../flutter_module/build/host/outputs/repo/com/baseflow/permissionhandler/permission_handler_android_$BUILD_PROFILE/1.0/
+DESTINATION_PLUGIN_PATH=flutter_../build/android/$BUILD_PROFILE/plugin
+AAR_LOCATION_PATHS=($PERMISSION_LIBRARY_ARR_PATH)
+
+if [ ! -d $DESTINATION_PLUGIN_PATH ]; then
+    mkdir -p $DESTINATION_PLUGIN_PATH
+fi
+
+for i in ${!AAR_LOCATION_PATHS[@]}
+do
+    aar_pathname=${AAR_LOCATION_PATHS[$i]}
+    echo "Copy $aar_pathname To $DESTINATION_PLUGIN_PATH"
+    cp -r $aar_pathname $DESTINATION_PLUGIN_PATH
+done
+
+
+# Copy dependencies 
+DESTINATION_DEPENDENCIES_PATH=../flutter_build/android/$BUILD_PROFILE/depedencies
 FLUTTER_DEPENDENCIES_PATH=~/.gradle/caches/modules-2/files-2.1/io.flutter/*$BUILD_PROFILE/*/*/*
 
 if [ ! -d $DESTINATION_DEPENDENCIES_PATH ]; then
