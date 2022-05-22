@@ -3,6 +3,8 @@
 Flutter Integrated Xamarin Project Proof of Concept
 
 ##Project Structure
+
+```
     . XamarinOnCrack(Root Folder)
     │
     ├── flutter_module                        # Flutter app module (Dart Code)
@@ -20,6 +22,7 @@ Flutter Integrated Xamarin Project Proof of Concept
     │
     └── XamarinOnCrack.Android                # Xamarin Entry point for Android
 
+```
 
 ##Setup
 
