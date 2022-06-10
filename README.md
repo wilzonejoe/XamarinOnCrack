@@ -28,7 +28,7 @@ Flutter Integrated Xamarin Project Proof of Concept
 
 Run on **XamarinOnCrack(root folder)** before build or after flutter_module file(s) modified.
 
-#### iOS
+### iOS
 
 This script will build flutter iOS framework. It will generate `.xcframework` files, which contains both iPhone and Simulator `.framework` files that we can use to do native binding to the **FlutterBindings.iOS**
 
@@ -36,15 +36,21 @@ After the build is done, the `.framworks` files will be copied to `flutter_build
 
 ##### Debug
 ```
-sh Scripts/build_flutter_ios debug
+sh Scripts/build_flutter_ios.sh debug
 ```
 
 ##### Release
 ```
-sh Scripts/build_flutter_ios release
+sh Scripts/build_flutter_ios.sh release
 ```
 
-#### Android
+#### Native Binding iOS 
+(Use iOS version available in your computer e.g. iphoneos15.5)
+```
+sharpie bind -o FlutterBindings.iOS -sdk iphoneos15.5 -framework flutter_module/build/ios/framework/Debug/Flutter.xcframework/ios-arm64_armv7/Flutter.framework
+```
+
+### Android
 
 This script will build flutter Android framework. It will generate `.aar` and `.pom` files, which we can use to do native binding to the **FlutterBindings.Android** & **FlutterBindings.Plugin.Android**
 
@@ -56,13 +62,22 @@ After the build is done, the `.aar` & `.pom` files will be copied to `flutter_bu
 
 ##### Debug
 ```
-sh Scripts/build_flutter_android debug
+sh Scripts/build_flutter_android.sh debug
 ```
 
 ##### Release
 ```
-sh Scripts/build_flutter_android release
+sh Scripts/build_flutter_android.sh release
 ```
+
+#### Native Binding Android 
+After linking JARs/AARs files into native binding project, build the binding project and you should find a file in obj/debug/api.xml.
+This file will show all of the API references to be translated to C#
+
+### Flutter project
+The beauty of this POC is that the Flutter module could run independently as its own project.
+Just keep in mind, navigation for Xamarin integration and Flutter standalone project could be different. 
+It is recommended to use injectable interfaces in flutter project so that there is different handler for Flutter standalone and Xamarin integration
 
 ## Known Limitation(s)
 
