@@ -8,8 +8,8 @@ using XamarinOnCrack.ViewModels.Common;
 
 namespace XamarinonCrack.iOS.Views
 {
-	public class MonoTouchWorkspace : UINavigationController, IWorkspace
-	{
+    public class MonoTouchWorkspace : UINavigationController, IWorkspace
+    {
         public event EventHandler ViewChanged;
 
         public void PopView()
@@ -24,7 +24,7 @@ namespace XamarinonCrack.iOS.Views
 
             if (view is MonoTouchView monoTouchView)
             {
-                var viewController = (UIViewController)monoTouchView.ViewController;
+                var viewController = (UIViewController) monoTouchView.ViewController;
                 PushViewController(viewController, true);
             }
             else
@@ -34,4 +34,3 @@ namespace XamarinonCrack.iOS.Views
         }
     }
 }
-

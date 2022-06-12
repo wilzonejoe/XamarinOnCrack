@@ -19,7 +19,8 @@ namespace XamarinonCrack.iOS
         // UISceneSession Lifecycle
 
         [Export("application:configurationForConnectingSceneSession:options:")]
-        public UISceneConfiguration GetConfiguration(UIApplication application, UISceneSession connectingSceneSession, UISceneConnectionOptions options)
+        public UISceneConfiguration GetConfiguration(UIApplication application, UISceneSession connectingSceneSession,
+            UISceneConnectionOptions options)
         {
             // Called when a new scene session is being created.
             // Use this method to select a configuration to create the new scene with.
@@ -52,14 +53,7 @@ namespace XamarinonCrack.iOS
 
             DependencyContainer.Start();
 
-            ////var rootView = (RootView)DependencyContainer.Resolve<IRootView>();
-            ////rootView.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
-            ////rootView.View.BackgroundColor = UIColor.White;
-
-            ////var mainViewModel = DependencyContainer.Resolve<MainViewModel>();
-            ////rootView.SetRootView(mainViewModel);
             return true;
         }
     }
 }
-

@@ -4,8 +4,8 @@ using XamarinOnCrack.Services.Interfaces;
 
 namespace XamarinOnCrack.Services
 {
-	public class ViewModelResolver : IViewModelResolver
-	{
+    public class ViewModelResolver : IViewModelResolver
+    {
         public TInterface Resolve<TInterface>()
             where TInterface : class, IViewModel
         {
@@ -19,4 +19,3 @@ namespace XamarinOnCrack.Services
         }
     }
 }
-

@@ -3,7 +3,7 @@ using UIKit;
 
 namespace XamarinonCrack.iOS.Views
 {
-	public class ViewController : UIViewController, IViewController
+    public class ViewController : UIViewController, IViewController
     {
         public event EventHandler OnViewDidAppear;
         public event EventHandler OnViewDidDisappear;
@@ -21,4 +21,3 @@ namespace XamarinonCrack.iOS.Views
         }
     }
 }
-

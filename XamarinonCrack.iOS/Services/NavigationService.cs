@@ -7,7 +7,7 @@ using XamarinOnCrack.Services.Interfaces;
 namespace XamarinonCrack.iOS.Services
 {
     public class NavigationService : INavigationService
-	{
+    {
         public void Pop(IWorkspace workspace)
         {
             workspace.PopView();
@@ -38,4 +38,3 @@ namespace XamarinonCrack.iOS.Services
         }
     }
 }
-

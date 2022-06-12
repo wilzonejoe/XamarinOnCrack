@@ -4,10 +4,9 @@ using XamarinOnCrack.Models.UserInterface;
 namespace XamarinOnCrack.Services.Interfaces
 {
     public interface INavigationService
-	{
-		void Push(IWorkspace workspace, IViewModel viewModel);
+    {
+        void Push(IWorkspace workspace, IViewModel viewModel);
 
-		void Pop(IWorkspace workspace);
-	}
+        void Pop(IWorkspace workspace);
+    }
 }
-

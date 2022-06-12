@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace XamarinOnCrack.Models.Abstracts
 {
-	public abstract class ObservableObject : INotifyPropertyChanged
+    public abstract class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -16,7 +16,9 @@ namespace XamarinOnCrack.Models.Abstracts
             OnRaisePropertyChanged(propertyName);
         }
 
-        protected virtual void OnRaisePropertyChanged(string propertyName) { }
+        protected virtual void OnRaisePropertyChanged(string propertyName)
+        {
+        }
 
         protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
@@ -33,4 +35,3 @@ namespace XamarinOnCrack.Models.Abstracts
         }
     }
 }
-

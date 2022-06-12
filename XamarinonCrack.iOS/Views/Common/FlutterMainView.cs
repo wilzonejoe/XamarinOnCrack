@@ -22,4 +22,3 @@ namespace XamarinonCrack.iOS.Views.Common
         }
     }
 }
-

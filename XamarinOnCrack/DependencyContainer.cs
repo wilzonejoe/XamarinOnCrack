@@ -11,28 +11,28 @@ namespace XamarinOnCrack
         private static IContainer _container;
         private static readonly ContainerBuilder Builder = new ContainerBuilder();
 
-        public static void AddTransient<TInterface>() 
+        public static void AddTransient<TInterface>()
             where TInterface : class
         {
             Builder.RegisterType<TInterface>();
         }
 
-        public static void AddTransient<TInterface, TImplementation>() 
-            where TInterface : class 
+        public static void AddTransient<TInterface, TImplementation>()
+            where TInterface : class
             where TImplementation : class, TInterface
         {
             Builder.RegisterType<TImplementation>().As<TInterface>();
         }
-        
-        public static void AddSingleton<TInterface, TImplementation>() 
-            where TInterface : class 
+
+        public static void AddSingleton<TInterface, TImplementation>()
+            where TInterface : class
             where TImplementation : class, TInterface
         {
             Builder.RegisterType<TImplementation>().As<TInterface>().SingleInstance();
         }
 
         public static void AddSingleton<TInterface, TImplementation>(TImplementation implementation)
-            where TInterface : class 
+            where TInterface : class
             where TImplementation : class, TInterface
         {
             Builder.RegisterInstance(implementation).As<TInterface>().SingleInstance();

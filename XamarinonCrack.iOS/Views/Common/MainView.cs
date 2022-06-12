@@ -4,7 +4,7 @@ using XamarinOnCrack.ViewModels.Common;
 namespace XamarinonCrack.iOS.Views.Common
 {
     public class MainView : MonoTouchView<MainViewModel>
-	{
+    {
         protected override IViewController CreateViewController()
         {
             var controller = new ViewController();
@@ -35,4 +35,3 @@ namespace XamarinonCrack.iOS.Views.Common
         }
     }
 }
-
