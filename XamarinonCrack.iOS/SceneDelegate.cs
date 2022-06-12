@@ -7,9 +7,7 @@ namespace NewSingleViewTemplate
     [Register("SceneDelegate")]
     public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
     {
-
-        [Export("window")]
-        public UIWindow Window { get; set; }
+        [Export("window")] public UIWindow Window { get; set; }
 
         [Export("scene:willConnectToSession:options:")]
         public void WillConnect(UIScene scene, UISceneSession session, UISceneConnectionOptions connectionOptions)

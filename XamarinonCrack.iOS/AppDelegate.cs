@@ -1,6 +1,11 @@
 ﻿using FlutterBindings.iOS;
 using Foundation;
 using UIKit;
+using XamarinonCrack.iOS.Services;
+using XamarinonCrack.iOS.Views;
+using XamarinonCrack.iOS.Views.Common;
+using XamarinOnCrack;
+using XamarinOnCrack.Services.Interfaces;
 
 namespace XamarinonCrack.iOS
 {
@@ -14,7 +19,8 @@ namespace XamarinonCrack.iOS
         // UISceneSession Lifecycle
 
         [Export("application:configurationForConnectingSceneSession:options:")]
-        public UISceneConfiguration GetConfiguration(UIApplication application, UISceneSession connectingSceneSession, UISceneConnectionOptions options)
+        public UISceneConfiguration GetConfiguration(UIApplication application, UISceneSession connectingSceneSession,
+            UISceneConnectionOptions options)
         {
             // Called when a new scene session is being created.
             // Use this method to select a configuration to create the new scene with.
@@ -35,8 +41,19 @@ namespace XamarinonCrack.iOS
             FlutterEngine = new FlutterEngine("My Flutter Engine");
             FlutterEngine.Run();
 
+            // Services
+            DependencyContainer.AddTransient<INavigationService, NavigationService>();
+
+            // Views
+            DependencyContainer.AddTransient<MainView>();
+            DependencyContainer.AddTransient<FlutterMainView>();
+
+            DependencyContainer.RegisterCommonServices();
+            DependencyContainer.RegisterViewModels();
+
+            DependencyContainer.Start();
+
             return true;
         }
     }
 }
-
