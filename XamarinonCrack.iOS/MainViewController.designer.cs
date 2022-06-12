@@ -11,8 +11,8 @@ using UIKit;
 
 namespace XamarinonCrack.iOS
 {
-    [Register("ViewController")]
-    partial class ViewController
+    [Register("MainViewController")]
+    partial class MainViewController
     {
     }
 }

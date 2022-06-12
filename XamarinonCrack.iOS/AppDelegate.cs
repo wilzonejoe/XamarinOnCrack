@@ -1,6 +1,11 @@
 ﻿using FlutterBindings.iOS;
 using Foundation;
 using UIKit;
+using XamarinonCrack.iOS.Services;
+using XamarinonCrack.iOS.Views;
+using XamarinonCrack.iOS.Views.Common;
+using XamarinOnCrack;
+using XamarinOnCrack.Services.Interfaces;
 
 namespace XamarinonCrack.iOS
 {
@@ -35,6 +40,24 @@ namespace XamarinonCrack.iOS
             FlutterEngine = new FlutterEngine("My Flutter Engine");
             FlutterEngine.Run();
 
+            // Services
+            DependencyContainer.AddTransient<INavigationService, NavigationService>();
+
+            // Views
+            DependencyContainer.AddTransient<MainView>();
+            DependencyContainer.AddTransient<FlutterMainView>();
+
+            DependencyContainer.RegisterCommonServices();
+            DependencyContainer.RegisterViewModels();
+
+            DependencyContainer.Start();
+
+            ////var rootView = (RootView)DependencyContainer.Resolve<IRootView>();
+            ////rootView.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
+            ////rootView.View.BackgroundColor = UIColor.White;
+
+            ////var mainViewModel = DependencyContainer.Resolve<MainViewModel>();
+            ////rootView.SetRootView(mainViewModel);
             return true;
         }
     }

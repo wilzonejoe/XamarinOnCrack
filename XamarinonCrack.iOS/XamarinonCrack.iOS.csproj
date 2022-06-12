@@ -14,6 +14,7 @@
         <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
         <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
         <ProvisioningType>automatic</ProvisioningType>
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
         <DebugSymbols>true</DebugSymbols>
@@ -48,6 +49,7 @@
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <CodesignKey>iPhone Developer</CodesignKey>
         <MtouchDebug>true</MtouchDebug>
+        <MtouchLink>SdkOnly</MtouchLink>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>none</DebugType>
@@ -58,6 +60,7 @@
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <MtouchArch>ARM64</MtouchArch>
         <CodesignKey>iPhone Developer</CodesignKey>
+        <MtouchLink>SdkOnly</MtouchLink>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />
@@ -116,6 +119,10 @@
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Resources\" />
+        <Folder Include="Services\" />
+        <Folder Include="Views\" />
+        <Folder Include="Images\" />
+        <Folder Include="Views\Common\" />
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -129,10 +136,17 @@
         <Compile Include="Main.cs" />
         <Compile Include="AppDelegate.cs" />
         <Compile Include="SceneDelegate.cs" />
-        <Compile Include="ViewController.cs" />
-        <Compile Include="ViewController.designer.cs">
-            <DependentUpon>ViewController.cs</DependentUpon>
+        <Compile Include="MainViewController.cs" />
+        <Compile Include="MainViewController.designer.cs">
+            <DependentUpon>MainViewController.cs</DependentUpon>
         </Compile>
+        <Compile Include="Services\NavigationService.cs" />
+        <Compile Include="Views\MonoTouchWorkspace.cs" />
+        <Compile Include="Views\MonoTouchView.cs" />
+        <Compile Include="Views\Common\MainView.cs" />
+        <Compile Include="Views\ViewController.cs" />
+        <Compile Include="Views\IViewController.cs" />
+        <Compile Include="Views\Common\FlutterMainView.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\FlutterBindings.iOS\FlutterBindings.iOS.csproj">
@@ -143,6 +157,9 @@
         <Project>{B3F5611A-DA9F-42B7-BF63-4D0244BC64B5}</Project>
         <Name>XamarinOnCrack</Name>
       </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <BundleResource Include="Images\dotnetbot.png" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

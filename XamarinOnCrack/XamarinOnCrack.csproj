@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -12,5 +13,27 @@
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+    <PackageReference Include="Autofac" Version="6.4.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Autofac" />
+    <None Remove="Autofac.Extensions.DependencyInjection" />
+    <None Remove="Services\" />
+    <None Remove="Services\Interfaces\" />
+    <None Remove="Models\" />
+    <None Remove="Models\UserInterface\" />
+    <None Remove="ViewModel\" />
+    <None Remove="Models\Abstracts\" />
+    <None Remove="ViewModel\Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\UserInterface\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\Abstracts\" />
+    <Folder Include="ViewModels\Common\" />
   </ItemGroup>
 </Project>
