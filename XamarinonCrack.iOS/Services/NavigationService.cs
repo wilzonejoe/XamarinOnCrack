@@ -4,7 +4,7 @@ using XamarinOnCrack;
 using XamarinOnCrack.Models.UserInterface;
 using XamarinOnCrack.Services.Interfaces;
 
-namespace XamarinonCrack.iOS.Services
+namespace XamarinOnCrack.iOS.Services
 {
     public class NavigationService : INavigationService
     {
@@ -16,6 +16,7 @@ namespace XamarinonCrack.iOS.Services
         public void Push(IWorkspace workspace, IViewModel viewModel)
         {
             var view = LocateView(viewModel);
+            view.ViewModel.Workspace = workspace;
             workspace.PushView(view);
         }
 
@@ -26,7 +27,7 @@ namespace XamarinonCrack.iOS.Services
             var viewName = viewModelType.FullName;
 
             // Replace project name
-            viewName = viewName.Replace("XamarinOnCrack.", "XamarinonCrack.iOS.");
+            viewName = viewName!.Replace("XamarinOnCrack.", "XamarinOnCrack.iOS.");
 
             // Replace view model to view
             viewName = viewName.Replace("ViewModel", "View");

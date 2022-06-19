@@ -18,10 +18,10 @@ flutter pub get
 
 case $BUILD_PROFILE in
     debug)
-        flutter build ios-framework --no-profile --no-release
+        flutter build ios-framework -t lib/main.integrated.dart --no-profile --no-release
     ;;
     release)
-        flutter build ios-framework --no-debug --no-profile
+        flutter build ios-framework -t lib/main.integrated.dart --no-debug --no-profile
     ;;
     *)
         echo "build profile '$BUILD_PROFILE' not valid"

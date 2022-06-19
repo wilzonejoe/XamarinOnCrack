@@ -1,13 +1,11 @@
 ﻿using FlutterBindings.iOS;
 using Foundation;
 using UIKit;
-using XamarinonCrack.iOS.Services;
-using XamarinonCrack.iOS.Views;
-using XamarinonCrack.iOS.Views.Common;
-using XamarinOnCrack;
+using XamarinOnCrack.iOS.Services;
+using XamarinOnCrack.iOS.Views.Common;
 using XamarinOnCrack.Services.Interfaces;
 
-namespace XamarinonCrack.iOS
+namespace XamarinOnCrack.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the
     // User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
