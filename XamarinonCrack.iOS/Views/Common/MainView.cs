@@ -1,16 +1,16 @@
 ﻿using UIKit;
+using XamarinOnCrack.iOS.Views.Systems;
 using XamarinOnCrack.ViewModels.Common;
 
-namespace XamarinonCrack.iOS.Views.Common
+namespace XamarinOnCrack.iOS.Views.Common
 {
     public class MainView : MonoTouchView<MainViewModel>
     {
         protected override IViewController CreateViewController()
         {
             var controller = new ViewController();
-            controller.View.BackgroundColor = UIColor.SystemBackground;
-
-            var rootView = controller.View;
+            var rootView = controller.View!;
+            rootView.BackgroundColor = UIColor.SystemBackground;
 
             var verticalStack = new UIStackView();
             rootView.AddSubview(verticalStack);
@@ -29,7 +29,6 @@ namespace XamarinonCrack.iOS.Views.Common
             button.SetTitleColor(UIColor.SystemBlue, UIControlState.Normal);
             button.TouchDown += (_, __) => _viewModel.GoToFlutterPage();
             verticalStack.AddArrangedSubview(button);
-
 
             return controller;
         }

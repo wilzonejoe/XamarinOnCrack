@@ -15,6 +15,7 @@
         <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
         <ProvisioningType>automatic</ProvisioningType>
         <LangVersion>default</LangVersion>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
         <DebugSymbols>true</DebugSymbols>
@@ -63,15 +64,15 @@
         <MtouchLink>SdkOnly</MtouchLink>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="System"/>
-        <Reference Include="System.Xml"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="Xamarin.iOS"/>
-        <Reference Include="System.Numerics"/>
-        <Reference Include="System.Numerics.Vectors"/>
+        <Reference Include="System" />
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Core" />
+        <Reference Include="Xamarin.iOS" />
+        <Reference Include="System.Numerics" />
+        <Reference Include="System.Numerics.Vectors" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Essentials" Version="1.7.3"/>
+        <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     </ItemGroup>
     <ItemGroup>
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -118,35 +119,39 @@
         </ImageAsset>
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Resources\"/>
-        <Folder Include="Services\"/>
-        <Folder Include="Views\"/>
-        <Folder Include="Images\"/>
-        <Folder Include="Views\Common\"/>
+        <Folder Include="Extensions" />
+        <Folder Include="Helpers" />
+        <Folder Include="Models" />
+        <Folder Include="Resources\" />
+        <Folder Include="Services\" />
+        <Folder Include="Views\" />
+        <Folder Include="Images\" />
+        <Folder Include="Views\Common\" />
     </ItemGroup>
     <ItemGroup>
-        <InterfaceDefinition Include="LaunchScreen.storyboard"/>
-        <InterfaceDefinition Include="Main.storyboard"/>
+        <InterfaceDefinition Include="LaunchScreen.storyboard" />
+        <InterfaceDefinition Include="Main.storyboard" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="Info.plist"/>
-        <None Include="Entitlements.plist"/>
+        <None Include="Info.plist" />
+        <None Include="Entitlements.plist" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Main.cs"/>
-        <Compile Include="AppDelegate.cs"/>
-        <Compile Include="SceneDelegate.cs"/>
-        <Compile Include="MainViewController.cs"/>
+        <Compile Include="Main.cs" />
+        <Compile Include="AppDelegate.cs" />
+        <Compile Include="SceneDelegate.cs" />
+        <Compile Include="MainViewController.cs" />
         <Compile Include="MainViewController.designer.cs">
             <DependentUpon>MainViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Services\NavigationService.cs"/>
-        <Compile Include="Views\MonoTouchWorkspace.cs"/>
-        <Compile Include="Views\MonoTouchView.cs"/>
-        <Compile Include="Views\Common\MainView.cs"/>
-        <Compile Include="Views\ViewController.cs"/>
-        <Compile Include="Views\IViewController.cs"/>
-        <Compile Include="Views\Common\FlutterMainView.cs"/>
+        <Compile Include="Services\NavigationService.cs" />
+        <Compile Include="Views\Common\FlutterMainView.cs" />
+        <Compile Include="Views\Common\MainView.cs" />
+        <Compile Include="Views\Systems\FlutterMonoTouchView.cs" />
+        <Compile Include="Views\Systems\IViewController.cs" />
+        <Compile Include="Views\Systems\MonoTouchView.cs" />
+        <Compile Include="Views\Systems\MonoTouchWorkspace.cs" />
+        <Compile Include="Views\Systems\ViewController.cs" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\FlutterBindings.iOS\FlutterBindings.iOS.csproj">
@@ -159,7 +164,7 @@
         </ProjectReference>
     </ItemGroup>
     <ItemGroup>
-        <BundleResource Include="Images\dotnetbot.png"/>
+        <BundleResource Include="Images\dotnetbot.png" />
     </ItemGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets"/>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

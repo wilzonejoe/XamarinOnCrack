@@ -1,12 +1,10 @@
-﻿using FlutterBindings.iOS;
-using System;
+﻿using System;
 using UIKit;
-using XamarinonCrack.iOS.Views;
-using XamarinOnCrack;
+using XamarinOnCrack.iOS.Views.Systems;
 using XamarinOnCrack.Services.Interfaces;
 using XamarinOnCrack.ViewModels.Common;
 
-namespace XamarinonCrack.iOS
+namespace XamarinOnCrack.iOS
 {
     public partial class MainViewController : UIViewController
     {
@@ -22,20 +20,19 @@ namespace XamarinonCrack.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            View.BackgroundColor = UIColor.SystemPink;
+
+            var parentViewFrame = View!.Frame;
 
             var workspace = new MonoTouchWorkspace();
-            workspace.View.Frame = new CoreGraphics.CGRect(
-                View.Frame.Location.X, View.Frame.Location.Y,
-                View.Frame.Size.Width, View.Frame.Size.Height);
+            workspace.View!.Frame = new CoreGraphics.CGRect(
+                parentViewFrame.Location.X, parentViewFrame.Location.Y,
+                parentViewFrame.Size.Width, parentViewFrame.Size.Height);
             workspace.View.BackgroundColor = UIColor.Black;
 
             View.AddSubview(workspace.View);
             AddChildViewController(workspace);
 
-            var navigationService = DependencyContainer.Resolve<INavigationService>();
-            var mainViewModel = DependencyContainer.Resolve<MainViewModel>();
-            navigationService.Push(workspace, mainViewModel);
+            _navigationService.Push(workspace, _mainViewModel);
         }
     }
 }

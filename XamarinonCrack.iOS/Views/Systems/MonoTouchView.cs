@@ -2,7 +2,7 @@
 using UIKit;
 using XamarinOnCrack.Models.UserInterface;
 
-namespace XamarinonCrack.iOS.Views
+namespace XamarinOnCrack.iOS.Views.Systems
 {
     public abstract class MonoTouchView<T> : MonoTouchView
         where T : IViewModel
@@ -21,7 +21,7 @@ namespace XamarinonCrack.iOS.Views
         private IViewController _viewController;
         public IViewController ViewController => _viewController ?? SetupViewController();
 
-        public IWorkspace Workspace { get; set; }
+        public IWorkspace Workspace => ViewModel.Workspace;
         public virtual IViewModel ViewModel { get; set; }
 
         protected abstract IViewController CreateViewController();

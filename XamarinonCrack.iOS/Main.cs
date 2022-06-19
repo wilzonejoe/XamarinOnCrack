@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace XamarinonCrack.iOS
+namespace XamarinOnCrack.iOS
 {
     public class Application
     {

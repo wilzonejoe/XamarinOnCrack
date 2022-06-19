@@ -16,10 +16,10 @@ flutter pub get
 
 case $BUILD_PROFILE in
     debug)
-        flutter build aar --no-profile --no-release
+        flutter build aar --t lib/main.integrated.dart -no-profile --no-release
     ;;
     release)
-        flutter build aar --no-debug --no-profile
+        flutter build aar -t lib/main.integrated.dart --no-debug --no-profile
     ;;
     *)
         echo "build profile '$BUILD_PROFILE' not valid"

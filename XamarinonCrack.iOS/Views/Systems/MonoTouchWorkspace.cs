@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Threading.Tasks;
 using UIKit;
-using XamarinOnCrack;
 using XamarinOnCrack.Models.UserInterface;
-using XamarinOnCrack.Services.Interfaces;
-using XamarinOnCrack.ViewModels.Common;
 
-namespace XamarinonCrack.iOS.Views
+namespace XamarinOnCrack.iOS.Views.Systems
 {
     public class MonoTouchWorkspace : UINavigationController, IWorkspace
     {
-        public event EventHandler ViewChanged;
-
         public void PopView()
         {
             PopViewController(true);

@@ -1,24 +1,31 @@
-﻿using FlutterBindings.iOS;
+﻿using System.Threading.Tasks;
+using Foundation;
+using XamarinOnCrack.iOS.Views.Systems;
 using XamarinOnCrack.ViewModels.Common;
 
-namespace XamarinonCrack.iOS.Views.Common
+namespace XamarinOnCrack.iOS.Views.Common
 {
-    public class FlutterMainView : MonoTouchView<FlutterMainViewModel>
+    public class FlutterMainView : FlutterMonoTouchView<FlutterMainViewModel>
     {
-        protected override IViewController CreateViewController()
+        class FlutterMethods
         {
-            var hostViewController = new ViewController();
-            var view = hostViewController.View;
-
-            var vc = new FlutterViewController(AppDelegate.FlutterEngine, null, null);
-            hostViewController.View.AddSubview(vc.View);
-            vc.View.Frame = new CoreGraphics.CGRect(
-                view.Frame.Location.X, view.Frame.Location.Y,
-                view.Frame.Size.Width, view.Frame.Size.Height);
-            hostViewController.AddChildViewController(vc);
-            vc.DidMoveToParentViewController(hostViewController);
-
-            return hostViewController;
+            public const string MethodGetData = "GetXamarinGetData";
+        }
+        
+        protected override async Task<NSObject?> DoProcessMethodCallAsync(string method, NSObject? arguments)
+        {
+            object? result = null;
+            
+            switch (method)
+            {
+                case FlutterMethods.MethodGetData:
+                    result = await _viewModel.GetDataAsync();
+                    break;
+                default:
+                    return await base.DoProcessMethodCallAsync(method, arguments);
+            }
+            
+            return result == null? null : NSObject.FromObject(result);
         }
     }
 }

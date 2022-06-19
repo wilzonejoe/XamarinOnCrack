@@ -9,7 +9,7 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace XamarinonCrack.iOS
+namespace XamarinOnCrack.iOS
 {
     [Register("MainViewController")]
     partial class MainViewController
