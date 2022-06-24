@@ -26,6 +26,10 @@ namespace FlutterBindings.iOS
         // -(BOOL)run;
         [Export("run")]
         bool Run();
+        
+        // @property (nonatomic, weak) FlutterViewController * _Nullable viewController;
+        [NullAllowed, Export ("viewController", ArgumentSemantic.Weak)]
+        FlutterViewController ViewController { get; set; }
     }
 
     //// @interface FlutterViewController : UIViewController <FlutterTextureRegistry, FlutterPluginRegistry>

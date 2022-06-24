@@ -112,6 +112,10 @@
             <Link>Jars\x86.jar</Link>
         </EmbeddedJar>
     </ItemGroup>
+    <Target Name="BuildFlutter" BeforeTargets="_CreateBindingResourceArchive">
+        <Message Text="Running Flutter Build Script..." />
+        <Exec Command="sh build_flutter_android.sh debug" />
+    </Target>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

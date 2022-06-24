@@ -12,9 +12,9 @@ abstract class IntegrationService {
     return "$_channelNamePrefix/$_channelNameSuffix";
   }
 
-  IntegrationService(this.configurationService, String channelNameSuffix) {
+  IntegrationService(this.configurationService) {
     _channelNamePrefix = configurationService.channelName;
-    _channelNameSuffix = channelNameSuffix;
+    _channelNameSuffix = configurationService.channelSuffixName;
 
     _initializeMethodChannel();
     _initializeMethodCallHandler();

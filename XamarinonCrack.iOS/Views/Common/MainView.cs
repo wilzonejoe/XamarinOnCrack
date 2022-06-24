@@ -27,7 +27,7 @@ namespace XamarinOnCrack.iOS.Views.Common
             var button = new UIButton();
             button.SetTitle("Go to Flutter Page", UIControlState.Normal);
             button.SetTitleColor(UIColor.SystemBlue, UIControlState.Normal);
-            button.TouchDown += (_, __) => _viewModel.GoToFlutterPage();
+            button.TouchDown += (_, __) => SpecificViewModel?.GoToFlutterMainPage();
             verticalStack.AddArrangedSubview(button);
 
             return controller;

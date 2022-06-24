@@ -1,17 +1,15 @@
-﻿using System.Threading.Tasks;
-using XamarinOnCrack.Models.UserInterface;
+﻿using XamarinOnCrack.Models.UserInterface;
+using XamarinOnCrack.Services.Interfaces;
 
 namespace XamarinOnCrack.ViewModels.Common
 {
     public class FlutterMainViewModel : BaseViewModel, IFlutterViewModel
     {
         public string Route => "/";
+        public string MethodChannelKey => $"com.welpup.flutter_module{Route}"!;
 
-        public async Task<string> GetDataAsync()
+        public FlutterMainViewModel(INavigationService navigationService) : base(navigationService)
         {
-            //Mock
-            await Task.Delay(2000);
-            return "Test From Xamarin";
         }
     }
 }

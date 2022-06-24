@@ -14,7 +14,7 @@ class IntegratedNavigationService extends IntegrationService
   final String navigateToActionMethod = "navigateTo";
 
   IntegratedNavigationService(IConfigurationService configurationService)
-      : super(configurationService, "navigationService");
+      : super(configurationService);
 
   @override
   Future onMethodCalled(String method, [params]) async {

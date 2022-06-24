@@ -6,38 +6,44 @@ using XamarinOnCrack.Models.UserInterface;
 namespace XamarinOnCrack.iOS.Views.Systems
 {
     public abstract class FlutterMonoTouchView<T> : MonoTouchView<T>
-        where T : IViewModel, IFlutterViewModel
+        where T : class, IViewModel, IFlutterViewModel
     {
-        public const string MethodClosePage= "navigateBack";
-        
+        private static class FlutterMethods
+        {
+            public const string MethodClosePage = "navigateBack";
+            public const string MethodNavigateToPage = "navigateTo";
+        }
+
+        private FlutterViewController? _flutterViewController;
+
         protected override IViewController CreateViewController()
         {
             var hostViewController = new ViewController();
             var view = hostViewController.View!;
-            
-            var viewController = new FlutterViewController(AppDelegate.FlutterEngine, null, null);
-            SetListeners(viewController);
-            
-            if (ViewModel is IFlutterViewModel flutterViewModel)
-                viewController.PushRoute(flutterViewModel.Route);
 
-            var flutterView = viewController.View!;
-            
-            view.AddSubview(viewController.View!);
+            var flutterEngine = AppDelegate.FlutterEngine;
+            _flutterViewController = new FlutterViewController(flutterEngine, null, null);
+            SetListeners(_flutterViewController);
+
+            if (ViewModel is IFlutterViewModel flutterViewModel)
+                _flutterViewController.PushRoute(flutterViewModel.Route);
+
+            var flutterView = _flutterViewController.View!;
+
+            view.AddSubview(_flutterViewController.View!);
             flutterView.Frame = new CoreGraphics.CGRect(
                 view.Frame.Location.X, view.Frame.Location.Y,
                 view.Frame.Size.Width, view.Frame.Size.Height);
-            
-            hostViewController.AddChildViewController(viewController);
-            viewController.DidMoveToParentViewController(hostViewController);
 
+            hostViewController.AddChildViewController(_flutterViewController);
+            _flutterViewController.DidMoveToParentViewController(hostViewController);
+            
             return hostViewController;
         }
 
         private void SetListeners(FlutterViewController controller)
         {
-            var pageTypeFullName = "com.welpup.flutter_module/navigationService"!;
-            var pageChannel = FlutterMethodChannel.MethodChannelWithName(pageTypeFullName, controller.BinaryMessenger);
+            var pageChannel = FlutterMethodChannel.MethodChannelWithName(SpecificViewModel.MethodChannelKey, controller.BinaryMessenger);
             pageChannel.SetMethodCallHandler(ProcessMethodCall);
         }
 
@@ -54,12 +60,24 @@ namespace XamarinOnCrack.iOS.Views.Systems
         {
             switch (method)
             {
-                case MethodClosePage:
-                    Workspace.PopView();
+                case FlutterMethods.MethodClosePage:
+                    ViewModel?.PopView();
                     break;
             }
-            
+
             return Task.FromResult<NSObject?>(null);
+        }
+
+        public override void OnShow()
+        {
+            base.OnShow();
+            AppDelegate.FlutterEngine.ViewController ??= _flutterViewController;
+        }
+
+        public override void OnClose()
+        {
+            base.OnClose();
+            AppDelegate.FlutterEngine.ViewController = null;
         }
     }
 }

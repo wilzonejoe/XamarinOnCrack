@@ -9,7 +9,6 @@ namespace XamarinOnCrack.iOS.Views.Common
     {
         class FlutterMethods
         {
-            public const string MethodGetData = "GetXamarinGetData";
         }
         
         protected override async Task<NSObject?> DoProcessMethodCallAsync(string method, NSObject? arguments)
@@ -18,9 +17,6 @@ namespace XamarinOnCrack.iOS.Views.Common
             
             switch (method)
             {
-                case FlutterMethods.MethodGetData:
-                    result = await _viewModel.GetDataAsync();
-                    break;
                 default:
                     return await base.DoProcessMethodCallAsync(method, arguments);
             }

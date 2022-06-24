@@ -9,4 +9,6 @@ import 'package:flutter_module/services/Interfaces/i_configuration_service.dart'
 class ConfigurationService extends CommonConfigurationService {
   @override
   String get channelName => "com.welpup.flutter_module";
+  @override
+  String get channelSuffixName => "comms";
 }

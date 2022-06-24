@@ -9,7 +9,7 @@
 # - sh build_flutter.sh release simulator
 
 # Define paths
-FLUTTER_MODULE_DIR=flutter_module
+FLUTTER_MODULE_DIR=../flutter_module
 BUILD_PROFILE=$1
 
 # Build Flutter module
