@@ -9,7 +9,7 @@ class PermissionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text("Home Page")),
+        appBar: AppBar(title: const Text("Permission Page")),
         body: Column(
           children: [
             ElevatedButton(

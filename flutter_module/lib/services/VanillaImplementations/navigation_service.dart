@@ -10,13 +10,12 @@ import 'package:flutter_module/services/Interfaces/i_navigation_service.dart';
 class IntegratedNavigationService implements INavigationService {
   @override
   void navigateBack(BuildContext context, [params]) {
-    Navigator.pop(context);
+    context.router.pop();
   }
 
   @override
   void navigateTo(BuildContext context, String route, [params]) {
-    Navigator.pushNamed(
-      context,
+    context.router.pushNamed(
       route
     );
   }

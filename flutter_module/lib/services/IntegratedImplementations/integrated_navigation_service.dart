@@ -18,7 +18,7 @@ class IntegratedNavigationService extends IntegrationService
 
   @override
   Future onMethodCalled(String method, [params]) async {
-    throw UnimplementedError();
+
   }
 
   @override
