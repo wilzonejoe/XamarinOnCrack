@@ -7,7 +7,7 @@
 # - sh build_flutter.sh release
 
 # Define paths
-FlutterModule_DIR=flutter_module
+FlutterModule_DIR=../flutter_module
 BUILD_PROFILE=$1
 
 # Build Flutter module
@@ -16,10 +16,10 @@ flutter pub get
 
 case $BUILD_PROFILE in
     debug)
-        flutter build aar --t lib/main.dart -no-profile --no-release
+        flutter build aar --no-profile --no-release
     ;;
     release)
-        flutter build aar -t lib/main.dart --no-debug --no-profile
+        flutter build aar --no-debug --no-profile
     ;;
     *)
         echo "build profile '$BUILD_PROFILE' not valid"

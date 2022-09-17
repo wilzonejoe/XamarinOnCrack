@@ -26,6 +26,10 @@ namespace FlutterBindings.iOS
         // -(BOOL)run;
         [Export("run")]
         bool Run();
+        
+        // @property (nonatomic, weak) FlutterViewController * _Nullable viewController;
+        [NullAllowed, Export ("viewController", ArgumentSemantic.Weak)]
+        FlutterViewController ViewController { get; set; }
     }
 
     //// @interface FlutterViewController : UIViewController <FlutterTextureRegistry, FlutterPluginRegistry>
@@ -37,9 +41,26 @@ namespace FlutterBindings.iOS
         [DesignatedInitializer]
         IntPtr Constructor(FlutterEngine engine, [NullAllowed] string nibName, [NullAllowed] NSBundle nibBundle);
 
+        // -(instancetype _Nonnull)initWithProject:(FlutterDartProject * _Nullable)project initialRoute:(NSString * _Nullable)initialRoute nibName:(NSString * _Nullable)nibName bundle:(NSBundle * _Nullable)nibBundle __attribute__((objc_designated_initializer));
+        [Export ("initWithProject:initialRoute:nibName:bundle:")]
+        [DesignatedInitializer]
+        IntPtr Constructor ([NullAllowed] FlutterDartProject project, [NullAllowed] string initialRoute, [NullAllowed] string nibName, [NullAllowed] NSBundle nibBundle);
+
         // @property (readonly, nonatomic) NSObject<FlutterBinaryMessenger> * _Nonnull binaryMessenger;
         [Export("binaryMessenger")]
         IFlutterBinaryMessenger BinaryMessenger { get; }
+        
+        // -(void)setInitialRoute:(NSString * _Nonnull)route __attribute__((deprecated("Use FlutterViewController initializer to specify initial route")));
+        [Export("setInitialRoute:")]
+        void SetInitialRoute(string route);
+        
+        // -(void)popRoute;
+        [Export ("popRoute")]
+        void PopRoute ();
+
+        // -(void)pushRoute:(NSString * _Nonnull)route;
+        [Export ("pushRoute:")]
+        void PushRoute (string route);
     }
 
     // @interface FlutterMethodChannel : NSObject
@@ -935,41 +956,41 @@ namespace FlutterBindings.iOS
     //	FlutterCallbackInformation LookupCallbackInformation (long handle);
     //}
 
-    //// @interface FlutterDartProject : NSObject
-    //[BaseType (typeof(NSObject))]
-    //[DisableDefaultCtor]
-    //interface FlutterDartProject
-    //{
-    //	// -(instancetype _Nonnull)initWithPrecompiledDartBundle:(NSBundle * _Nullable)bundle __attribute__((objc_designated_initializer));
-    //	[Export ("initWithPrecompiledDartBundle:")]
-    //	[DesignatedInitializer]
-    //	IntPtr Constructor ([NullAllowed] NSBundle bundle);
+    // @interface FlutterDartProject : NSObject
+    [BaseType (typeof(NSObject))]
+    [DisableDefaultCtor]
+    interface FlutterDartProject
+    {
+    	// -(instancetype _Nonnull)initWithPrecompiledDartBundle:(NSBundle * _Nullable)bundle __attribute__((objc_designated_initializer));
+    	[Export ("initWithPrecompiledDartBundle:")]
+    	[DesignatedInitializer]
+    	IntPtr Constructor ([NullAllowed] NSBundle bundle);
 
-    //	// +(NSString * _Nonnull)lookupKeyForAsset:(NSString * _Nonnull)asset;
-    //	[Static]
-    //	[Export ("lookupKeyForAsset:")]
-    //	string LookupKeyForAsset (string asset);
+    	// +(NSString * _Nonnull)lookupKeyForAsset:(NSString * _Nonnull)asset;
+    	[Static]
+    	[Export ("lookupKeyForAsset:")]
+    	string LookupKeyForAsset (string asset);
 
-    //	// +(NSString * _Nonnull)lookupKeyForAsset:(NSString * _Nonnull)asset fromBundle:(NSBundle * _Nullable)bundle;
-    //	[Static]
-    //	[Export ("lookupKeyForAsset:fromBundle:")]
-    //	string LookupKeyForAsset (string asset, [NullAllowed] NSBundle bundle);
+    	// +(NSString * _Nonnull)lookupKeyForAsset:(NSString * _Nonnull)asset fromBundle:(NSBundle * _Nullable)bundle;
+    	[Static]
+    	[Export ("lookupKeyForAsset:fromBundle:")]
+    	string LookupKeyForAsset (string asset, [NullAllowed] NSBundle bundle);
 
-    //	// +(NSString * _Nonnull)lookupKeyForAsset:(NSString * _Nonnull)asset fromPackage:(NSString * _Nonnull)package;
-    //	[Static]
-    //	[Export ("lookupKeyForAsset:fromPackage:")]
-    //	string LookupKeyForAsset (string asset, string package);
+    	// +(NSString * _Nonnull)lookupKeyForAsset:(NSString * _Nonnull)asset fromPackage:(NSString * _Nonnull)package;
+    	[Static]
+    	[Export ("lookupKeyForAsset:fromPackage:")]
+    	string LookupKeyForAsset (string asset, string package);
 
-    //	// +(NSString * _Nonnull)lookupKeyForAsset:(NSString * _Nonnull)asset fromPackage:(NSString * _Nonnull)package fromBundle:(NSBundle * _Nullable)bundle;
-    //	[Static]
-    //	[Export ("lookupKeyForAsset:fromPackage:fromBundle:")]
-    //	string LookupKeyForAsset (string asset, string package, [NullAllowed] NSBundle bundle);
+    	// +(NSString * _Nonnull)lookupKeyForAsset:(NSString * _Nonnull)asset fromPackage:(NSString * _Nonnull)package fromBundle:(NSBundle * _Nullable)bundle;
+    	[Static]
+    	[Export ("lookupKeyForAsset:fromPackage:fromBundle:")]
+    	string LookupKeyForAsset (string asset, string package, [NullAllowed] NSBundle bundle);
 
-    //	// +(NSString * _Nonnull)defaultBundleIdentifier;
-    //	[Static]
-    //	[Export ("defaultBundleIdentifier")]
-    //	string DefaultBundleIdentifier { get; }
-    //}
+    	// +(NSString * _Nonnull)defaultBundleIdentifier;
+    	[Static]
+    	[Export ("defaultBundleIdentifier")]
+    	string DefaultBundleIdentifier { get; }
+    }
 
     //// @interface FlutterEngine : NSObject <FlutterTextureRegistry, FlutterPluginRegistry>
     //[BaseType (typeof(NSObject))]

@@ -66,5 +66,9 @@
             <SmartLink>False</SmartLink>
         </NativeReference>
     </ItemGroup>
+    <Target Name="BuildFlutter" BeforeTargets="PreBuildEvent">
+        <Message Text="Running Flutter Build Script..."/>
+        <Exec Command="sh build_flutter_ios.sh debug" />
+    </Target>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets"/>
 </Project>

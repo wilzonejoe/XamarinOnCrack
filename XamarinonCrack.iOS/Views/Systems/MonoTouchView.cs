@@ -2,27 +2,22 @@
 using UIKit;
 using XamarinOnCrack.Models.UserInterface;
 
-namespace XamarinonCrack.iOS.Views
+namespace XamarinOnCrack.iOS.Views.Systems
 {
     public abstract class MonoTouchView<T> : MonoTouchView
-        where T : IViewModel
+        where T : class, IViewModel
     {
-        protected T _viewModel;
-
-        public override IViewModel ViewModel
-        {
-            get => _viewModel;
-            set => _viewModel = (T) value;
-        }
+        protected T SpecificViewModel => ViewModel as T ?? throw new NullReferenceException("View Model is not set");
     }
 
     public abstract class MonoTouchView : IView, IDisposable
     {
-        private IViewController _viewController;
-        public IViewController ViewController => _viewController ?? SetupViewController();
+        private IViewController? _viewController;
+        public IViewController ViewController => _viewController ??= SetupViewController();
 
-        public IWorkspace Workspace { get; set; }
-        public virtual IViewModel ViewModel { get; set; }
+        protected IWorkspace? Workspace => ViewModel?.Workspace;
+        
+        public IViewModel? ViewModel { get; set; }
 
         protected abstract IViewController CreateViewController();
 
@@ -36,11 +31,11 @@ namespace XamarinonCrack.iOS.Views
             view.Bounds = UIScreen.MainScreen.Bounds;
         }
 
-        private void OnCloseEvent(object sender, EventArgs args) => OnShow();
+        private void OnCloseEvent(object sender, EventArgs args) => OnClose();
 
-        private void OnShowEvent(object sender, EventArgs args) => OnClose();
+        private void OnShowEvent(object sender, EventArgs args) => OnShow();
 
-        public IViewController SetupViewController()
+        private IViewController SetupViewController()
         {
             var viewController = CreateViewController();
             AttachControllerListeners(viewController);

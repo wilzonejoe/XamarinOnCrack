@@ -1,7 +1,7 @@
 ﻿using System;
 using UIKit;
 
-namespace XamarinonCrack.iOS.Views
+namespace XamarinOnCrack.iOS.Views.Systems
 {
     public class ViewController : UIViewController, IViewController
     {
